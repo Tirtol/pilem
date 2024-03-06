@@ -24,4 +24,6 @@ class ApiService {
     final data = json.decode(response.body);
     return List<Map<String, dynamic>>.from(data['results']);
   }
+
+  searchMovies(String text) {}
 }
