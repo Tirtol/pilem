@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:pilem/models/movie.dart';
+
 import 'package:flutter/material.dart';
+import 'package:pilem/models/movie.dart';
 import 'package:pilem/screens/detail_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -35,6 +36,12 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _loadFavoriteMovies();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Favorite Screen')),
@@ -49,6 +56,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 'https://image.tmdb.org/t/p/w500${movie.posterPath}',
                 height: 50,
                 width: 50,
+                fit: BoxFit.cover,
               ),
               title: Text(movie.title),
               onTap: () {
